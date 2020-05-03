@@ -1,21 +1,26 @@
 package com.skilldistillery.filmquery.entities;
-
+import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
-
-public class Actor { // dont put SQL enteties in here
-	  private int id;
-	  private String firstName;
-	  private String lastName;
-	  private List<Film> films;
-	  
-	  public Actor() {
-		  
-	  }
-	  
-	  
+public class Actor {
+	private int id;
+	private String firstName;
+	private String lastName;
+	private List<Film> films;
+	
+	public Actor() {
+		
+	}
+	public Actor(int id, String firstName, String lastName) {
+		super();
+		this.id = id;
+		this.firstName = firstName;
+		this.lastName = lastName;
+	}
 	public int getId() {
 		return id;
 	}
@@ -39,10 +44,6 @@ public class Actor { // dont put SQL enteties in here
 	}
 	public void setFilms(List<Film> films) {
 		this.films = films;
-	}
-	@Override
-	public String toString() {
-		return "Actor [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", films=" + films + "]";
 	}
 	@Override
 	public int hashCode() {
@@ -82,6 +83,24 @@ public class Actor { // dont put SQL enteties in here
 			return false;
 		return true;
 	}
-	  
-	  
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Actor [id=");
+		builder.append(id);
+		builder.append(", firstName=");
+		builder.append(firstName);
+		builder.append(", lastName=");
+		builder.append(lastName);
+		builder.append(", films=");
+		builder.append(films);
+		builder.append("]");
+		return builder.toString();
 	}
+}
+
+
+
+
+
+
